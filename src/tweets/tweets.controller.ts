@@ -22,10 +22,10 @@ export class TweetsController {
     return this.tweetsService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateTweetDto: UpdateTweetDto) {
-  //   return this.tweetsService.update(+id, updateTweetDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateTweetDto: UpdateTweetDto) {
+    return this.tweetsService.update(+id, updateTweetDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

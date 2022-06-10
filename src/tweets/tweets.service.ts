@@ -3,6 +3,7 @@ import { prisma, Tweet } from '@prisma/client';
 import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { PrismaService } from '../prisma/prisma.service';
+import { Interval } from '@nestjs/schedule';
 
 @Injectable()
 export class TweetsService {
@@ -23,6 +24,16 @@ export class TweetsService {
     return await this.prisma.tweet.findUnique({
       where:{
         id: id
+      }
+    });
+  }
+
+  async update(id: number, updateTweetDto: UpdateTweetDto) {
+    return await this.prisma.tweet.update({
+      where: {
+        id: id
+      }, data:{
+        name: updateTweetDto.name
       }
     });
   }
